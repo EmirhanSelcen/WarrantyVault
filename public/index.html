@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WarrantyVault</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">WarrantyVault</p>
+          <h1>Product warranty and service tracker</h1>
+        </div>
+        <button id="logoutButton" class="ghost hidden" type="button">Logout</button>
+      </section>
+
+      <section id="authView" class="auth-grid">
+        <form id="registerForm" class="panel">
+          <h2>Create account</h2>
+          <label>Name<input name="name" required minlength="2" /></label>
+          <label>Email<input name="email" type="email" required /></label>
+          <label>Password<input name="password" type="password" required minlength="6" /></label>
+          <button type="submit">Register</button>
+        </form>
+
+        <form id="loginForm" class="panel">
+          <h2>Login</h2>
+          <label>Email<input name="email" type="email" required /></label>
+          <label>Password<input name="password" type="password" required /></label>
+          <button type="submit">Login</button>
+        </form>
+      </section>
+
+      <section id="dashboardView" class="hidden">
+        <div class="dashboard-head">
+          <div>
+            <p id="welcomeText" class="eyebrow"></p>
+            <h2>Your vault</h2>
+          </div>
+          <a href="/api-docs" target="_blank" rel="noreferrer">Swagger API</a>
+        </div>
+
+        <div id="message" class="message hidden"></div>
+
+        <section class="filters">
+          <input id="searchInput" placeholder="Search name, brand or serial number" />
+          <input id="categoryFilter" placeholder="Category filter" />
+          <label class="checkbox">
+            <input id="expiringFilter" type="checkbox" />
+            Expiring in 30 days
+          </label>
+          <button id="refreshButton" class="ghost" type="button">Refresh</button>
+        </section>
+
+        <section class="workspace">
+          <form id="productForm" class="panel">
+            <h2 id="productFormTitle">Add product</h2>
+            <input name="id" type="hidden" />
+            <label>Product name<input name="name" required /></label>
+            <label>Brand<input name="brand" required /></label>
+            <label>Category<input name="category" required /></label>
+            <label>Purchase date<input name="purchaseDate" type="date" required /></label>
+            <label>Warranty end<input name="warrantyEndDate" type="date" required /></label>
+            <label>Serial number<input name="serialNumber" /></label>
+            <label>Notes<textarea name="notes" rows="3"></textarea></label>
+            <div class="button-row">
+              <button type="submit">Save product</button>
+              <button id="cancelEditButton" class="ghost" type="button">Cancel</button>
+            </div>
+          </form>
+
+          <div class="panel">
+            <h2>Products</h2>
+            <div id="productList" class="product-list"></div>
+          </div>
+        </section>
+
+        <section class="workspace">
+          <form id="serviceForm" class="panel">
+            <h2>Add service record</h2>
+            <label>Product<select name="productId" required></select></label>
+            <label>Service date<input name="serviceDate" type="date" required /></label>
+            <label>Provider<input name="provider" required /></label>
+            <label>Description<textarea name="description" rows="3" required></textarea></label>
+            <label>Cost<input name="cost" type="number" min="0" step="0.01" value="0" /></label>
+            <button type="submit">Save service</button>
+          </form>
+
+          <div class="panel">
+            <h2>Service history</h2>
+            <div id="serviceList" class="service-list"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "warranty-vault",
+  "version": "1.0.0",
+  "description": "WarrantyVault - personal product warranty and service tracking system",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest --runInBand"
+  },
+  "keywords": [
+    "express",
+    "jwt",
+    "sqlite",
+    "swagger",
+    "vanilla-js"
+  ],
+  "author": "EmirhanSelcen",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
