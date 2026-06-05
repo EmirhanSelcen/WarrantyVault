@@ -39,6 +39,10 @@ async function api(path, options = {}) {
 
   const data = await response.json();
   if (!response.ok) {
+    if (response.status === 401) {
+      clearSession();
+      renderShell();
+    }
     throw new Error(data.message || "Request failed");
   }
 
