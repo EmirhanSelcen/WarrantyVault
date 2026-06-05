@@ -21,8 +21,8 @@ async function listProducts(userId, filters = {}) {
   const where = ["user_id = ?"];
 
   if (filters.category) {
-    where.push("LOWER(category) = LOWER(?)");
-    params.push(filters.category);
+    where.push("LOWER(category) LIKE LOWER(?)");
+    params.push(`%${filters.category}%`);
   }
 
   if (filters.search) {
